@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Required meta tags -->
@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>ToDoList</title>
+    <title>ToDo list application</title>
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">ToDo</a>
+    <a class="navbar-brand" th:href="@{/}">ToDo</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,12 +26,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">List</a>
+                <a class="nav-link" th:href="@{/}">List</a>
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0" action="#" method="post">
-            <button class="btn btn-outline-success my-2 my-sm-0">Logout</button>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/login}">Login</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" href="#">Logout</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/register}">Register</a>
         </form>
     </div>
 </nav>
@@ -39,7 +41,7 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" href="/todo">Add Todo</a>
+            <a class="btn btn-primary" th:href="@{/task}">Add Todo</a>
         </div>
 
         <div class="col-12">
@@ -54,16 +56,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr hidden>
-                    <td class="text-center" colspan="5">No data</td>
-                </tr>
                 <tr>
                     <th scope="row">1</th>
                     <td>Bootstrap 4 CDN and Starter Template</td>
                     <td>Cristina</td>
                     <td>01.01.2020</td>
                     <td>
-                        <a class="btn btn-success" href="#"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-success" th:href="@{/task}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Bootstrap Grid 4 Tutorial and Examples</td>
+                    <td>Cristina</td>
+                    <td>01.01.2020</td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/task}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Bootstrap Flexbox Tutorial and Examples</td>
+                    <td>Cristina</td>
+                    <td>01.01.2020</td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/task}"><i class="fas fa-edit"></i></a>
                         <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
@@ -85,5 +104,4 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
