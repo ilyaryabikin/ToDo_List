@@ -1,7 +1,10 @@
 package organizer.list.todo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,6 +16,7 @@ import organizer.list.todo.repositories.UserRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collections;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,7 +41,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.getUserByName(username)
+        User user = userRepository.findUserByName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User with name " + username + " not found"));
         return new org.springframework.security.core.userdetails.User(
                 user.getName(),
