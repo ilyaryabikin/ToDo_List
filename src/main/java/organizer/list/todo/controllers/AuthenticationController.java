@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 @Slf4j
-public class LoginController {
+public class AuthenticationController {
     private static final String REDIRECT_TO = "redirect:/";
     private static final String LOGIN_PAGE = "login";
     private static final String REGISTER_PAGE = "register";
@@ -23,7 +23,7 @@ public class LoginController {
     private final UserService userService;
 
     @Autowired
-    public LoginController(UserService userService) {
+    public AuthenticationController(UserService userService) {
         this.userService = userService;
     }
 

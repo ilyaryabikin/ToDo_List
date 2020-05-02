@@ -13,7 +13,7 @@ public class UserCredentials {
 
     private Long id;
 
-    @NotBlank()
+    @NotBlank
     private String username;
 
     @NotNull

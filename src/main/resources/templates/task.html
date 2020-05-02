@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- Required meta tags -->
@@ -10,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>ToDo</title>
+    <title>Add ToDo Task</title>
 </head>
 
 <body>
@@ -30,10 +32,10 @@
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/login}">Login</a>
-            <a class="btn btn-outline-success my-2 my-sm-0" href="#">Logout</a>
-            <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/register}">Register</a>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+            <a sec:authorize="isAnonymous()" class="btn btn-outline-success my-2 mr-2 my-sm-0" th:href="@{/login}">Login</a>
+            <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 mr-2 my-sm-0">Logout</button>
+            <a sec:authorize="isAnonymous()" class="btn btn-outline-success my-2 my-sm-0" th:href="@{/register}">Register</a>
         </form>
     </div>
 </nav>
